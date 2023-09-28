@@ -1,7 +1,7 @@
-def call(nexusRepoName){
+def call(){
   def pom = readMavenPom file: 'pom.xml'
    def ver = pom.version
-   
+   def repoName = 'doctor-online-release'
    if(ver.endsWith("SNAPSHOT")){
      repoName = 'doctor-online-snapshot'                        
    }
@@ -14,6 +14,6 @@ def call(nexusRepoName){
      nexusUrl: env.nexus_url,
      nexusVersion: 'nexus3',
      protocol: 'http',
-     repository: nexusRepoName,
+     repository: repoName,
      version: ver
 }
